@@ -1,0 +1,107 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body{
+    background: linear-gradient(to right, #e2e2e2, #a9b4da);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100vh;
+}
+
+/* outer container */
+.container{
+    border-radius: 40px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
+    position: relative;
+    overflow: hidden;
+    width: 999px;
+    max-width: 100%;
+    min-height: 480px;
+}
+
+.container p{
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 0.3px;
+    margin: 10px 0;
+}
+
+#forgot_password{
+    color: #0072b1;
+    font-size: 14px;
+    text-decoration: none;
+    align-self: first baseline;
+    /* margin: 15px 0 10px; */
+}
+
+.switch p a{
+    font-size: 16px;
+}
+
+.in_link{
+    color: #0072b1;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.container button{
+    background-color: #0072b1;
+    color: #fff;
+    font-size: 14px;
+    padding: 10px 45px;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.container form{
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 40px;
+    height: 100%;
+}
+
+.container input{
+    background-color: #eee;
+    border: 1px solid #140f22;
+    margin: 10px 0;
+    padding: 10px 15px;
+    font-size: 18px;
+    border-radius: 8px;
+    width: 100%;
+    outline: none;
+}
+
+/* moves login section to right */
+.login-container{
+    position: absolute;
+    /* top: 0; */
+    width: 50%;
+    height: 100%;
+    right: 0; 
+}
+
+/* section with logo */
+.logo{
+    position: absolute;
+    background-color: #4871ea;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* flex-direction: column; */ 
+}

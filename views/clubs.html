@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/afterjoin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <title>Document</title>
+</head>
+<body>
+    <!-- main body section starts here -->
+    <div class="main-body">
+        <!-- section with navbar -->
+        <div class="navbar">
+            <div class="title">
+                <h1>College Club Connect</h1>
+            </div>
+            <div class="search-container">
+                <input type="text" class="search-input" placeholder="Search Threads...">
+            </div>
+            <div class="new-thread-btn">
+                <button class="new-btn">New Thread</button>
+            </div>
+            <!-- div with profile section -->
+            <div class="profile-section">
+                <div class="profile-name" id="profile-name">
+                    <form action="/logout" method="post">
+                        <input type="submit" value="Logout" class="logoutbtn">
+                    </form>
+                </div>
+                <div class="profile-picture">
+                    <a href="#"><img src="/images/profile.png" height="80" width="80"></a>
+                </div>
+
+            </div>
+        </div>
+        <div id="modal" class="modal">
+            <div class="modal-content">
+              <span class="close">&times;</span>
+              <form id="discussion-form">
+                
+                <label for="name">Title:</label>
+                <input type="text" id="discussion" name="discussion"placeholder="Start discussion" autocomplete="off"/>
+                <br>
+            
+                <label for="text">Description:</label>
+                <input type="text" id="description" name="description">
+            
+                <div id="to-center">
+                    <input type="submit" value="Submit" id="startBtn">
+                </div>
+              </form>
+            </div>
+        </div>
+        <!-- section with navbar ends here -->
+    <div class="content">
+        <div class="parts" id="club-info">
+            
+        </div>
+        <div class="parts" id="threads">
+            <div id="discussion-container">
+                <div class="thread-topics">
+                    <div>
+                        <div class="upper-part">
+                            <div class="before-counter">
+                                <div id="thread-title">
+                                    <p><b>Introduction about the club</b></p>
+                                </div>
+                                <div id="thread-description">
+                                    <p>I am curious to know about student clubs. Can anyone guide me through it?</p>
+                                </div>
+                            </div>
+                            <div id="vote-counter">
+                                <div class="vertical-vote">
+                                    <div id="upvote-counter">
+                                        <button class="upvote-button" onclick="toggleVote(1)"><i class="fa-solid fa-caret-up"></i></button>
+                                    </div>
+                                    <div id="voteCount"><p>0</p></div>
+                                    <div id="downvote-counter">
+                                        <button class="downvote-button" onclick="toggleVote(-1)"><i class="fa-solid fa-caret-up"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="thread-author">
+                            <p>Posted by: <a href="#">Deepesh Khanal</a>
+                                <div id="vertical-line">&#9866</div>
+                                <div id="posted-time">11:50:00</div>
+                            </p>
+                        </div>
+                    
+                            <!-- <div id="comment-container" class="comment-container">
+                                <div class="all-comment">
+                                    <div class="card">
+                                        <span id="reply" class="reply">
+                                            <div><i class="fa-regular fa-comment"></i></div>
+                                            <button class="cmnt">Add a comment</button>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div> -->
+                        <div id="add-comment-container">
+                            <div class="card">
+                                <button class="show-comment-input"><i class="fa-regular fa-comment"></i>Add Comment</button>
+                                <div id="comment-input-wrapper" style="display: none;">
+                                    <div class="to-flex">
+                                        <input class="input" type="text" id="comment-input" placeholder="Type your comment here">
+                                    
+                                        <button id="add-comment-btn">Submit</button>
+                                
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="reply">
+
+                        </div>
+                    </div>
+                </div>  
+            </div>
+            
+            
+        </div>
+        
+    </div>
+        </div>
+        
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.11.2/qs.min.js" integrity="sha512-vCegEXqPUYpZsTGz2lk0jaQ1psxtFeniVJACAXhMVxuoYa/N4nZkjoVFOxLwP7uGeQOoemiz7DQrIpRTj4IBPw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+      const urlParams = new URLSearchParams(window.location.search);
+      const usern = urlParams.get('username');
+      const club = urlParams.get('room');
+      const discussionContainer = document.getElementById('discussion-container');
+
+      document.addEventListener('DOMContentLoaded', () => {
+        discussionContainer.addEventListener('click', function(event) {
+        if (event.target && event.target.matches('.show-comment-input')) {
+            const commentInputWrapper = event.target.nextElementSibling;
+            commentInputWrapper.style.display = 'block';
+        }
+
+        if (event.target && event.target.matches('#add-comment-btn')) {
+            const threadTitle = event.target.closest('.thread-topics').querySelector('#thread-title p');
+            const threadTitleText = threadTitle.textContent;
+            console.log('Thread Title:', threadTitleText);
+            const commentInput = event.target.previousElementSibling;
+            const comment = commentInput.value;
+            socket.emit('comment',({club,threadTitleText,comment}))
+        }
+        })
+          fetch(`/data?username=${usern}&room=${club}`)
+              .then(response =>(response.json()))
+              .then(data => {
+                console.log(data)
+                
+                  const threadTopicsDiv = document.querySelector('.thread-topics');
+                  data[0].forEach(({username,title, description, time})=>{
+                    console.log(username,title)
+                    if (data[0].length === 0) {
+                    discussionContainer.removeChild(threadTopicsDiv);
+                    }
+                    const discussionElement = discussionContainer.querySelector('.thread-topics').cloneNode(true);
+                    discussionElement.querySelector('#thread-title p b').textContent = title;
+                    discussionElement.querySelector('#thread-description p').textContent = description;
+                    discussionElement.querySelector('#thread-author a').textContent = username;
+                    discussionElement.querySelector('#posted-time').textContent = time;
+                    discussionContainer.appendChild(discussionElement);
+
+                }) 
+                    discussionContainer.style.display = 'block'   // discussionContainer.appendChild(commentEl)
+                    })
+                }).catch(e=>console.log(e))
+  </script>
+    <script>
+            const replyEl = document.getElementById('reply')
+            const threadTopicsDiv = document.querySelector('.thread-topics');
+
+        fetch(`/comments?username=${usern}&room=${club}`)
+    .then(response => response.json())
+    .then(data => {
+        console.log(data)
+
+        data[0].forEach(({username,comments,time}) => {
+            const commentDiv = document.createElement('div');
+            commentDiv.classList.add('comment');
+            
+            commentDiv.innerHTML = `
+                <div class="comment-author">${username}</div>
+                <div class="comment-text">${comments}</div>
+                <div class="comment-time">${time}</div> </br>
+            `;
+            replyEl.appendChild(commentDiv);
+        });
+        threadTopicsDiv.appendChild(replyEl);
+    })
+    .catch(error => {
+        console.error('Error fetching comments:', error);
+    });
+
+    </script>
+    
+    <script>
+        const newBtn = document.querySelector('.new-btn')
+        const modal = document.getElementById("modal");
+        const closeBtn = document.querySelector(".close");
+        newBtn.addEventListener('click',()=>{
+            modal.style.display = "block"
+        })
+
+        closeBtn.addEventListener("click", function() {
+        modal.style.display = "none";
+        });
+
+
+        window.addEventListener("click", function(event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+        });
+        let voteCount = 0;
+
+        let currentVote = localStorage.getItem('vote');
+        if (currentVote !== null) {
+            voteCount = parseInt(currentVote);
+            document.getElementById('voteCount').textContent = voteCount;
+        }
+
+        function toggleVote(value) {
+            // Check if user has already voted
+            if (localStorage.getItem('vote') !== null) {
+                // Revert the previous vote
+                let previousVote = parseInt(localStorage.getItem('vote'));
+                voteCount -= previousVote;
+            }
+
+            // Update vote count
+            voteCount += value;
+            document.getElementById('voteCount').textContent = voteCount;
+
+            // Store the current vote
+            localStorage.setItem('vote', value);
+        }
+    </script>
+            
+    
+    <script src="../js/main.js" type="text/javascript"></script>
+    <script src="../js/reply.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.4/socket.io.js" integrity="sha512-tE1z+95+lMCGwy+9PnKgUSIeHhvioC9lMlI7rLWU0Ps3XTdjRygLcy4mLuL0JAoK4TLdQEyP0yOl/9dMOqpH/Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</body>
+</html>

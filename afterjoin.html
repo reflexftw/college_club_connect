@@ -1,0 +1,164 @@
+<!-- FILEPATH: /home/deepesh/Desktop/collegeclubconnect/collegeclubconnect/source/dashboard.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="./css/afterjoin.css">
+</head>
+<body>
+
+    <!-- main body section starts here -->
+    <div class="main-body">
+        <!-- section with navbar -->
+        <div class="navbar">
+            <div class="title">
+                <h1>College Club Connect</h1>
+            </div>
+            <div class="search-container">
+                <input type="text" class="search-input" placeholder="Search Threads...">
+            </div>
+            <div class="new-thread-btn">
+                <input type="button" class="new-btn">New Thread
+            </div>
+            <!-- div with profile section -->
+            <div class="profile-section">
+                <div class="profile-name" id="profile-name">
+                    <form action="/logout" method="post">
+                        <input type="submit" value="Logout" class="logoutbtn">
+                    </form>
+                </div>
+                <div class="profile-picture">
+                    <a href="#"><img src="/images/profile.png" height="80" width="80"></a>
+                </div>
+
+            </div>
+        </div>
+        <!-- section with navbar ends here -->
+
+        <div class="content">
+            <!-- section with left section -->
+            <div class="parts" id="club-info">
+                <h2 id="club-name">Robotics Club</h2>
+                <p id="club-description">Welcome to our Robotics Club, where innovation meets imagination! Our club is a hub for aspiring engineers, programmers, and creators to come together and explore the exciting world of robotics.Let's embark on a journey of discovery and innovation together!</p>
+            </div>
+            <!-- section with left section ends here -->
+
+            <!-- section with main section -->
+            <div class="parts" id="threads">        
+                    <div class="thread-topics">
+                        <div id="thread-title">
+                            <p>How is the current scenario of Robotics in Nepal?</p>
+                        </div>
+                        <div id="thread-description">
+                            <p>I am curious to know about the current scenario of Robotics in Nepal. Can anyone provide me some insights?</p>
+                        </div>
+                            
+                        <div id="thread-author">
+                            <div id="comment-section">
+                                <input type="text" id="comment-input" placeholder="Comment...">
+                                <!-- <button id="comment-button">Submit</button> -->
+                            </div> 
+                            <p>Posted by: <a href="#">Deepesh Khanal</a>
+                                <div id="vertical-line">&#9866</div>
+                                <div id="posted-time">1hr ago</div>
+                            </p>
+                        </div>
+                        </div>
+                        <div id="vote-counter">
+                            <p id="voteCount">0</p>
+                            <div id="upvote-counter">
+                                <button class="upvote-button" onclick="toggleVote(1)">&#94;</button>
+                            </div>
+                            <div id="downvote-counter">
+                                <button class="downvote-button" onclick="toggleVote(-1)">&#94;</button>
+                            </div>
+                        </div>
+                        <script>
+                            const newThreadBtn = document.querySelector('.new-btn')
+                            console.log(newThreadBtn)   
+                            let voteCount = 0;
+
+                            // Check if user has already voted and their vote
+                            let currentVote = localStorage.getItem('vote');
+                            if (currentVote !== null) {
+                                voteCount = parseInt(currentVote);
+                                document.getElementById('voteCount').textContent = voteCount;
+                            }
+
+                            function toggleVote(value) {
+                                // Check if user has already voted
+                                if (localStorage.getItem('vote') !== null) {
+                                    // Revert the previous vote
+                                    let previousVote = parseInt(localStorage.getItem('vote'));
+                                    voteCount -= previousVote;
+                                }
+
+                                // Update vote count
+                                voteCount += value;
+                                document.getElementById('voteCount').textContent = voteCount;
+
+                                // Store the current vote
+                                localStorage.setItem('vote', value);
+                            }
+
+                            
+
+                                // let voteCount = 0;
+
+                                // // Check if user has already voted
+                                // if(localStorage.getItem('hasVoted') === 'true') {
+                                //     disableButtons();
+                                // }
+
+                                // function vote(value) {
+                                //     // Check if user has already voted
+                                //     if(localStorage.getItem('hasVoted') === 'true') {
+                                //         alert('You have already voted!');
+                                //         return;
+                                //     }
+
+                                //     // Update vote count
+                                //     voteCount += value;
+                                //     document.getElementById('voteCount').textContent = voteCount;
+
+                                //     // Mark user as voted
+                                //     localStorage.setItem('hasVoted', 'true');
+
+                                //     // Disable buttons after voting
+                                //     disableButtons();
+                                // }
+
+                                // function disableButtons() {
+                                //     document.getElementById('upvoteButton').disabled = true;
+                                //     document.getElementById('downvoteButton').disabled = true;
+                                // }
+
+
+
+                            // let voteCount = 0;
+
+                            // function updateCount(value) {
+                            // voteCount += value;
+                            // document.getElementById('voteCount').textContent = voteCount;
+                            // }
+                        </script>
+                    </div>
+                <div class="thread-topics">
+
+                </div>
+                <div class="thread-topics">
+
+                </div>
+                    
+                    
+            </div>
+        </div>
+        <!-- section with main section ends here -->
+    </div>
+    <!-- main body section ends here -->
+    
+    <script type="text/javascript" src="script.js"></script>
+
+</body>
+</html>

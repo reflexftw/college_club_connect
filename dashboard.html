@@ -1,0 +1,123 @@
+<!-- FILEPATH: /home/deepesh/Desktop/collegeclubconnect/collegeclubconnect/source/dashboard.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="css/dashboard.css">
+</head>
+<body>
+
+    <!-- main body section starts here -->
+    <div class="main-body">
+        <!-- section with navbar -->
+        <div class="navbar">
+            <div class="title">
+                <h1>College Club Connect</h1>
+            </div>
+            <div class="search-container">
+                <input type="text" class="search-input" placeholder="Search Threads...">
+            </div>
+            <!-- <div class="new-thread-btn">
+                <input type="button">New Thread
+            </div> -->
+            <!-- div with profile section -->
+            <div class="profile-section">
+                <div class="profile-name" id="profile-name">
+                    <form action="/logout" method="post">
+                        <input type="submit" value="Logout" class="logoutbtn">
+                    </form>
+                </div>
+                <div class="profile-picture">
+                    <a href="#"><img src="/images/profile.png" height="80" width="80"></a>
+                </div>
+
+            </div>
+        </div>
+        <!-- section with navbar ends here -->
+
+        <div class="content">
+            <!-- section with left section -->
+            <div class="parts" id="most-discussed">
+                <h2>Message From the Team</h2>
+                <div class="threads">
+                    <h3>Welcome to our platform!</h3>
+                </div>
+                <div class="threads">
+                    <h3>Forum rules and guidelines</h3>
+                </div>
+                <div class="threads">
+                    <h3>Feedbacks for our app</h3>
+                </div>
+            </div>
+            <!-- section with left section ends here -->
+
+            <!-- section with main section -->
+            <div class="parts" id="clubs">
+                <div>
+                        <h2>Clubs</h2>
+                        <div class="join-container">
+                            <header class="join-header">
+                                <h1><i class="fas fa-smile"></i>Connect With The Clubs</h1>
+                            </header>
+                            <main class="join-main">
+                                <form action="./views/clubs.html" class="club-join">
+                                    <div class="form-control">
+                                        <label for="username">Username</label>
+                                        <input
+                                            type="text"
+                                            name="username"
+                                            id="username"
+                                            placeholder="Enter username..."
+                                            required
+                                        />
+                                    </div>
+                                    <div class="form-control">
+                                        <label for="room">Clubs</label>
+                                        <select name="room" id="room">
+                                            <option value="Robotics">Robotics</option>
+                                            <option value="Literature">Literature</option>
+                                            <option value="Programming">Programming</option>
+                                            <option value="Art">Art</option>
+                                            <!-- <option value="Ruby">Ruby</option>
+                                            <option value="Java">Java</option> -->
+                                        </select>
+                                    </div>
+                                    <button type="submit" class="btn">Join Club</button>
+                                </form>
+                            </main>
+                        </div>
+                    </div>       
+                </div>
+            </div>
+            <!-- section with main section ends here -->
+        </div>
+    </div>
+    <script src="/socket.io/socket.io.js"></script>
+
+    <script>
+        var socket = io()
+        btn = document.getElementById('robo')
+        btn2 = document.getElementById('lit')
+
+        const roomName = 'Robotics'
+        btn.addEventListener('click', (e)=>{
+            // e.preventDefault()
+            socket.emit('join-room',roomName)
+            console.log('User joined successfully')
+
+        })
+        btn2.addEventListener('click', (e)=>{
+            // e.preventDefault()
+            socket.emit('join-room','Literature')
+            console.log('User joined successfully')
+
+        })
+
+
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.4/socket.io.js" integrity="sha512-tE1z+95+lMCGwy+9PnKgUSIeHhvioC9lMlI7rLWU0Ps3XTdjRygLcy4mLuL0JAoK4TLdQEyP0yOl/9dMOqpH/Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    
+</body>
+</html>

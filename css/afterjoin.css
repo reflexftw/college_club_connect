@@ -1,0 +1,499 @@
+/* CSS styles for the navbar */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+.navbar {
+    /* position: sticky; */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0px;
+}
+
+/* css for logo */
+.title {
+    font-size: 20px;
+    display: flex;
+    padding: 10px 15px;
+}
+#discussion-container {
+    display: none;
+}
+
+/* css for search field */
+.search-container {
+    margin-left: 15%;
+    border-radius: 10px;
+    height: 60px;
+    /* display: flex; */
+    /* justify-content: space-between; */
+    align-items: center;
+    width: 30%;
+    max-width: 450px;
+    border: 1px solid #6275f3;
+    /* box-shadow: 0 2px 6px 0 rgba(63, 97, 161, 0.2),0 24px 20px -24px rgba(41, 65, 122, 0.1); */
+    overflow: hidden;
+}
+
+/* css for input field in search */
+.search-input{
+    /* background: url(./search.png) no-repeat; */
+    justify-content: center;
+    background-color: #f3f5f7;
+    /* margin: 0; */
+    border: none;
+    outline: none;
+    font-size: 20px;
+    color: #000;
+    width: 100%;
+    height: 100%;
+    padding-left: 10px;
+}
+
+.new-thread-btn{
+    height: 60px;
+    /* padding: 0px 20px; */
+    display: flex;
+    align-items: center;
+    margin: 20px 20px;
+    font-size: large;
+    color: #6275f3;
+    border: 1px solid #6275f3;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.new-btn{
+    width: auto;
+    border: none;
+    border-radius: 10px;
+    height: 58px;
+    background-color: #fff;
+}
+.new-btn:hover{
+    background-color: #5a4ba5;
+    color: #fff;
+    transition: 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    animation: fadeIn 0.3s ease-in-out; /* Fade in animation */
+  }
+  
+  /* Modal Content */
+  .modal-content {
+    display: flex;
+    flex-direction: column;
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+    animation: slideIn 0.3s ease-in-out; /* Slide in animation */
+  }
+  
+#discussion-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    padding: 10px 10px;
+    margin: 20px 10px 20px 0px;
+    font-size: 20px;
+    background-color: #f3f5f7;
+    color: #000;
+    border: 1px solid #aeabab;
+    border-radius: 10px;
+}
+
+#discussion, #description{
+    height: 40px;
+}
+
+#to-center{
+    padding-top: 10px;
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+}
+
+  /* Close button */
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  /* Fade-in animation */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  /* Slide-in animation */
+  @keyframes slideIn {
+    from {
+      transform: translateY(-50px);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+/* input[type=submit]{
+    border: none;
+    background-color: #fff;
+    font-size: 14px;
+    cursor: pointer;
+} */
+
+.logoutbtn{
+    background-color: #7f6cda;
+    color: #fff;
+    font-size: 14px;
+    padding: 10px 20px;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.logoutbtn:hover{
+    background-color: #5a4ba5;
+    color: #202020;
+    transition: 0.3s ease-in-out;
+    /* cursor: pointer; */
+}
+
+/* works for profile button */
+.profile-section {
+    display: flex;
+    /* position: relative; */
+    /* justify-content: center; */
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+.profile-name, a{
+    text-decoration: none;
+    color: #7f6cda;
+    padding-right: 10px;
+}
+
+/* css for section with class body */
+.content {
+    display: flex;
+    /* flex-direction: row; */
+    justify-content: space-between;
+    border-top: 2px solid #d9dcde;
+    background-color: #fff;
+    height: 90vh;
+}
+
+/* css for left section with clubs */
+.parts:nth-child(1) {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: left;
+    text-align: center;
+    width: 20%;
+    height: 70vh;
+    margin: 40px 30px 30px 10px;
+    background-color: #fff;
+    border-radius: 15px;
+}
+
+.upper-part {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 20px 10px 10px;
+    border-bottom: 2px solid #d9dcde;
+}
+
+/* css for main section with most discussed questions */
+.parts:nth-child(2) {
+    display: flex;
+    flex-direction: column;
+    /* padding:0px 0px 0px 20px; */
+    width: 80%;
+    height: 60vh;
+    /* margin-top: 40px; */
+    margin-right: 100px;
+    background-color: #fff;
+    border-radius: 20px;
+}
+
+.thread-topics{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    padding: 0px 20px 20px 10px;
+    /* border-style: outset; */
+    border: 2px solid #fff;
+    box-shadow: 2px 2px 6px 2px rgba(63, 97, 161, 0.2),0 24px 20px -24px rgba(41, 65, 122, 0.1);
+    background-color: #fff;
+    border-radius: 10px;
+}
+
+#thread-title{
+    padding: 20px 20px 0px 10px;
+    font-size: medium;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+#thread-description{
+    padding: 20px 20px 10px 10px;
+    color: #0000009f;
+    padding-right: 20%;
+    text-align: justify;
+}
+
+#thread-author{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding: 20px 20px 10px 10px;
+    text-align: justify;
+    color: #0000009f;
+    a{
+        text-decoration: none;
+        color: #0000009f;
+    }
+}
+
+/* #comment-section{
+    display: flex;
+    flex: 0.35;
+    height: 2.5vw;
+    border: none;
+    outline: none;
+} */
+
+#comment-input{
+    background-color: #f3f5f7;
+}
+
+.vertical-vote{
+    display: flex;
+    flex-direction: column;
+    column-gap: 0px;
+    align-items: center;
+    width: 2rem;
+    border: 1px solid #d9dcde;
+    border-radius: 20px;
+}
+
+/* .upvote-button:hover, .downvote-button:hover{
+    background-color: #e3e5e7;
+} */
+
+#upvote-counter{
+    display: flex;
+    /* flex-direction: column; */
+    align-items: center;
+    justify-content: space-around;
+    /* width: 100%; */
+}
+
+.upvote-button{
+    background-color: #fff;
+    color: #7f6cda;
+    display: flex;
+    font-size: 40px;
+    padding: 0px;
+    margin: 0;
+    background: none;
+    border: none;
+}
+
+.downvote-button{
+    background-color: #fff;
+    background: none;
+    color: #7f6cda;
+    border: none;
+    font-size: 40px;
+    padding: 0px;
+    transform: rotate(180deg);
+}
+
+button.upvote-button, button.downvote-button{
+    cursor: pointer;
+}
+
+/* #voteCount{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* padding: 10px 10px 0px 10px; */
+
+
+#vertical-line{
+    transform: rotate(90deg);
+}
+
+#most-discussed{
+    display: flex;
+}
+
+.card{
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+    width: fit-content;
+    border-radius: 10px;
+    margin-top: 10px;
+
+}
+
+button.show-comment-input{
+    display: flex;
+    justify-content: space-around;
+    padding: 5px 5px 5px 5px;
+    color: #0000009f;
+    width: 9rem;
+    background-color: #f3f5f7;
+    border: 1px solid #aeabab;
+    border-radius: 10px;
+    margin-left: 0px;
+    cursor: pointer;
+}
+
+.to-flex{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 5px;
+    color: #0000009f;
+    /* width: 60vw;  */
+    background-color: #fff;
+    border: none;
+    border-radius: 10px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+
+#clubs{
+    display: flex;
+}
+
+h2{
+    align-self: first baseline;
+    padding: 20px 20px 10px 10px;
+    display: flex;
+}
+
+.threads{
+    display: flex;
+     align-items: center;
+    padding-left: 20px; 
+    height: 40%;
+    margin: 10px 10px;
+    border-style: outset;
+    border: 1px solid #aeabab;
+    background-color: #f3f5f7;
+    /* background-color: #fff; */
+    color: #000000;
+    border-radius: 15px;
+}
+
+.parts{
+    display: flex;
+    padding-left: 30px;
+    flex-direction: column;
+    width: 100%;
+}
+
+#club-info{
+    padding: 20px 20px 10px 10px;
+    text-align: justify;
+    color: #000;
+}
+
+
+/* works on add a comment button */
+#reply{
+    display: inline-block;
+    padding: 10px 5px 10px 5px;
+    color: #0000009f;
+    width:auto;
+    background-color: #f3f5f7;
+    border: 1px solid #aeabab;
+    border-radius: 10px;
+    margin-left: 0px;
+    /* overflow-x: hidden; */
+    /* overflow: visible; */
+    /* overflow-wrap: break-word; */
+    /* word-wrap: break-word; */
+    /* white-space: pre-wrap; */
+    /* cursor: pointer; */
+}
+
+  
+  .input {
+    width: 100%;
+    height: 45px;
+    border-radius: 10px;
+  }
+  
+  /* works on submit button */
+  button#add-comment-btn {
+    color: white;
+    margin-left: 5px;
+    background-color: rgb(135, 135, 235);
+    border: 0px;
+    padding: 0px 10px;
+    border-radius: 10px;
+    height: 45px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+  }
+  
+  #add-comment-btn:hover{
+        background-color: #5a4ba5;
+        color:white;
+  }
+
+
+  /* .all-comment:not(:first-child) {
+    margin-left: 2rem;
+  } */
+
+
+
+

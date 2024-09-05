@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/login_register.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <img src="./images/final_logo.png" alt="Logo" height="200" width="300">
+        </div>
+        <div class="login-container">
+            <form id="form" method="POST" action="/login">
+                <h1>Login</h1>
+                <input type="email" placeholder="Email" id="email" name="email">
+                <span id="email-msg"></span>
+                <input type="password" placeholder="Password" id="password" name="password">
+                <span id="pw-msg"></span>
+                <a href="#" id="forgot_password">Forgot Password?</a>
+                <!-- <button id="btn_signin" type="submit" >Sign In</button> -->
+                <input type="submit" value="Sign in">
+                 <div class="switch">
+                    <p>Not a member yet? <span id="register_span"><a href="./register_club.html" class="in_link">Register</a></span></p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>
